@@ -252,7 +252,7 @@ selRename :: String -> String
 selRename = dropWhile ('_'==)
 
 gfromM1S :: forall c. Selector c
-         => GBEncodable f BValue
+         => forall f. forall i. forall p. GBEncodable f BValue
          => BDict -> Result (M1 i c f p)
 gfromM1S dict
   | Just va <- BD.lookup (BC.pack (selRename name)) dict = M1 <$> gfrom va
